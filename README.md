@@ -1,50 +1,52 @@
 # Heart Disease Classification
-This project involves the classification of heart disease using a machine learning approach.
+This project focuses on the classification of heart disease using various machine learning algorithms. It demonstrates preprocessing of a heart disease dataset, model training, evaluation, and visualization of results.
 
 ## Project Description
-This project involves the classification of heart disease using a machine learning approach. The dataset was preprocessed and various classification algorithms were applied, including Support Vector Machine (SVM), Logistic Regression (both with sklearn and implemented from scratch), and Random Forest. The project also includes data visualizations and metrics to evaluate the performance of these models.
+The heart disease classification project employs machine learning techniques to predict the presence of heart disease based on various health indicators. The project uses algorithms like Support Vector Machine (SVM), Logistic Regression, and Random Forest. It features both a custom implementation of Logistic Regression and scikit-learn's implementation for comparison. Additionally, the project includes comprehensive data visualizations and evaluation metrics.
 
 ## Dataset
-The dataset used in this project contains information related to heart disease diagnosis. The preprocessing of the dataset involved one-hot encoding categorical features, scaling numerical features, and splitting the data into training and testing sets. The preprocessed dataset is saved as 'data/heart_preprocessed.csv'.
+The dataset includes various heart health indicators and a target variable indicating the presence of heart disease. Key preprocessing steps include:
 
-## Preprocessing
-The data preprocessing steps are as follows:
+ - One-hot encoding for categorical variables.
+ - Min-Max scaling for numerical variables.
+ - Splitting into training and testing sets (75% train, 25% test).
 
- - One-hot encoding of categorical columns ('Sex', 'ChestPainType', 'RestingECG', 'ExerciseAngina', 'ST_Slope').
- - Scaling numerical columns ('Age', 'RestingBP', 'Cholesterol', 'MaxHR', 'Oldpeak') using Min-Max scaling.
- - Combining one-hot encoded categorical and scaled numerical features.
- - Splitting the dataset into training and testing sets (75% train, 25% test).
+## Models
+The project includes the following models:
 
-## Logistic Regression
- - Implemented from scratch with custom code.
- - Utilized the Logistic Regression model from scikit-learn for comparison.
- - Classification report and visualizations generated for evaluation.
-
-## Support Vector Machine (SVM)
- - SVM model trained using scikit-learn.
- - Classification report and visualizations generated for evaluation.
-
-## Random Forest
- - Random Forest model trained using scikit-learn.
- - Classification report and visualizations generated for evaluation.
+ - **Logistic Regression**: Custom implementation and scikit-learn's implementation.
+ - **Support Vector Machine (SVM)**: Implemented using scikit-learn.
+ - **Random Forest**: Implemented using scikit-learn.
 
 ## Metrics and Visualizations
-Classification reports are generated for each model, providing metrics such as accuracy, precision, recall, and F1-score.
-Visualizations include categorical and continuous feature plots, confusion matrices, and ROC curves.
+Each model is evaluated using classification reports (accuracy, precision, recall, F1-score) and visualizations (feature plots, confusion matrices, ROC curves).
+
+## New Features
+ - **Command-Line Interface**: The project now supports command-line arguments for flexible execution of different parts, including model training and visualizations.
+ - **Visualizations for Categorical and Continuous Variables**: Enhanced with options to visualize specific variables.
 
 ## Usage
-Clone the project repository to your local machine.
-Ensure you have the required libraries installed (numpy, pandas, scikit-learn, matplotlib).
-Run the **main()** function in the **main.py** file to execute the entire project.
-Metrics and visualizations will be saved in a folder named 'metrics_dir'.
+1. Clone the repository.
+2. Install required libraries
+3. Run main.py with desired flags:
+
+```
+python main.py --svm
+python main.py --logistic_regression
+python main.py --random_forest
+python main.py --categorical_visualization --categorical_columns <column_names>
+python main.py --continuous_visualization --continuous_columns <column_names>
+```
+
+4. View generated metrics and visualizations in the 'metrics' folder.
 
 ## Project Structure
-**data/:** Contains the raw and preprocessed datasets.
-**model_training.py:** Contains functions for training SVM, Logistic Regression, and Random Forest models.
-**logistic_regression.py:** Contains code for Logistic Regression implemented from scratch.
-**data_wrangling.py:** Functions for loading and preprocessing data.
-**visualization.py:** Functions for generating visualizations.
-**main.py:** Main script to execute the project.
+ - data/: Raw and preprocessed datasets.
+ - model_training.py: Training functions for SVM, Logistic Regression, and Random Forest.
+ - logistic_regression.py: Custom Logistic Regression implementation.
+ - data_wrangling.py: Data loading and preprocessing functions.
+ - visualization.py: Visualization functions.
+ - main.py: Main script with command-line interface.
 
 ## Results
-The project results include classification reports and visualizations for each model, which can be found in the 'metrics_dir' folder.
+The 'metrics' folder contains classification reports and visualizations for each model. Detailed results are dependent on the specific models and visualizations executed.
