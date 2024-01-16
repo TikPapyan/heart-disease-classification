@@ -55,11 +55,12 @@ def categorical_visualizations(data, column):
 
 
 def show_values(pc, fmt="%.2f", **kw):
-
     pc.update_scalarmappable()
     ax = pc.axes
 
     for p, color, value in zip(pc.get_paths(), pc.get_facecolors(), pc.get_array()):
+        if isinstance(value, np.ma.core.MaskedArray):
+            value = value.data[0]
         x, y = p.vertices[:-2, :].mean(0)
         if np.all(color[:3] > 0.5):
             color = (0.0, 0.0, 0.0)
