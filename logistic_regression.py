@@ -1,6 +1,5 @@
 import numpy as np
-import joblib
-
+import wandb
 
 def sigmoid(z):
     op = 1/(1 + np.exp(-z))
@@ -70,7 +69,7 @@ def lr_classification_report(metrics):
     print(f"{'weighted avg':<15}{metrics['weighted_precision']:.2f}{'':<15}{metrics['weighted_recall']:.2f}{'':<15}{metrics['weighted_f1_score']:.2f}\n")
 
 
-def logistic_regression(X_train, y_train, X_test, y_test):
+def logistic_regression(X_train, y_train, X_test, y_test, use_wandb=False):
     X_train_bias = np.c_[np.ones((X_train.shape[0], 1)), X_train]
     X_test_bias = np.c_[np.ones((X_test.shape[0], 1)), X_test]
 
@@ -90,6 +89,7 @@ def logistic_regression(X_train, y_train, X_test, y_test):
     accuracy = np.mean(y_test == y_pred)
     metrics = lr_calculate_metrics(y_test, y_pred, accuracy)
 
-    return metrics, y_pred, weights
+    if use_wandb:
+        wandb.log(metrics)
 
-
+    return metrics, weights
